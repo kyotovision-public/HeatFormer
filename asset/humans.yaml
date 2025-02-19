@@ -1,8 +1,8 @@
 DEBUG : True
 DEBUG_ITER : 5
 J_regressor : 'J_regressor_h36m_correct.npy'
-DEBUG_DIR : /home/ymatsuda/SMPLFormer/VAL_SBS/dummy
-LOGDIR : /home/ymatsuda/SMPLFormer/LOG_SBS/dummy
+DEBUG_DIR : DEBUG
+LOGDIR : LOG
 DEVICE : cuda
 EPOCH : 50
 DRY_RUN : True
@@ -22,25 +22,20 @@ DATASET:
   TRAIN_SAMPLING_MPII3D: 10
 LOSS:
   CUMSUM: False
-  KP_2D: 0.01 # 300.0 # try 0.03 default 0.01
-  KP_3D: 0.05 # 300.0
-  BETA: 0.0005 #0.06
+  KP_2D: 0.01
+  KP_3D: 0.05
+  BETA: 0.0005
   GLOBAL_ORIENT: 0.001
-  POSE: 0.001 # 60.0
+  POSE: 0.001
   ADVERSARIAL: 0.0005
   VERTS: 0.0003
   NORMAL_VECTOR: 0.0
   VERTS_ALL: True
-  # HEATMAP: [0.001, 0.002, 0.003]
   HEATMAP: [0.001, 0.003, 0.005, 0.007, 0.009]
-  # HEATMAP: [0.001, 0.005, 0.01]
 TRAIN:
   BATCH_SIZE: 8
   DATASETS: ['h36m', 'mpii3d']
-  # DATASETS: ['h36m']
   EVAL_DATASETS: 'h36m'
-  # EVAL_DATASETS: 'mpii3d'
-  # LR_STEP: [20,30,40]
   LR_STEP: [30, 40]
   LR_FACTOR: 0.2
   LR: 0.00001
@@ -50,19 +45,16 @@ TRAIN:
 
 MODEL:
   ADAFUSE:
-    PRETRAINED: '/home/ymatsuda/SMPLFormer/lib/models/pretrain/h36m_4view.pth.tar'
+    PRETRAINED: 'lib/models/pretrain/h36m_4view.pth.tar'
   VIT:
     # IMG_PRETRAINED: '/home/ymatsuda/U-HMR/vit_pos_trans_encoder/model_best.pth.tar'
-    HM_PRETRAINED: '/home/ymatsuda/SMPLFormer/LOG_FINAL/fuse_encoder_dep2_head8/model_best.pth.tar'
+    HM_PRETRAINED: 'lib/models/pretrain/fuse_encoder_dep2_head8.pth.tar'
     HM_SIZE: 256
   HEATMAP: default
   ITERS : 3
   TYPE : 'transformer_decoder_spin'
   FUSE_TYPE: 'SCORE'
   QUERY_TYPE: 3
-  # ROT: True
-  # ROT_START: 3
-  # ROT_GT: True
   ENCODER:
     DEPTH: 2
     HEADS: 8
@@ -71,7 +63,7 @@ MODEL:
     HEADS: 8
 
 POSE_RESNET:
-  PRETRAINED: '/home/ymatsuda/SMPLFormer/lib/models/backbone/pose_resnet.pth'
+  PRETRAINED: 'lib/models/backbone/pose_resnet.pth'
   FINAL_CONV_KERNEL: 1
   DECONV_WITH_BIAS: False
   NUM_DECONV_LAYERS: 3
