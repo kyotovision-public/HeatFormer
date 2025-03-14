@@ -54,11 +54,7 @@ def main(cfg, args):
         writer.add_text('config', pprint.pformat(cfg), 0)
     else:
         writer = None
-    
-    if not os.path.exists(cfg.DEBUG_DIR):
-        os.makedirs(cfg.DEBUG_DIR)
 
-    # TODO pretrain modelのいらない重み消して、一発ロードできるようにする
     heatmapper = get_pose_net(cfg).to(cfg.DEVICE)
     if cfg.POSE_RESNET.PRETRAINED:
         heatmapper_pretrain_path = osp.join(ROOT_DIR, cfg.POSE_RESNET.PRETRAINED)
@@ -135,6 +131,7 @@ def main(cfg, args):
 
     # Data Loaders
     if not cfg.DEBUG:
+        # It takes few minutes to load dataset
         train_loader, valid_loader = get_loaders_multiview(cfg)
     else:
         print(f'Loading fast dataset')
@@ -159,7 +156,7 @@ def main(cfg, args):
         device=cfg.DEVICE,
         writer=writer,
         debug=cfg.DEBUG,
-        logdir=cfg.LOGDIR
+        logdir=osp.join(ROOT_DIR, cfg.LOGDIR)
     ).fit()
 
 if __name__ == '__main__':

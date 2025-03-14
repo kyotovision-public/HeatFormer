@@ -4,10 +4,12 @@ import numpy
 import logging
 import os.path as osp
 
-def create_logger(logdir, phase='train'):
-    os.makedirs(logdir, exist_ok=True)
+from lib.core.config import ROOT_DIR
 
-    log_file = osp.join(logdir, f'{phase}_log.txt')
+def create_logger(logdir, phase='train'):
+    os.makedirs(osp.join(ROOT_DIR, logdir), exist_ok=True)
+
+    log_file = osp.join(ROOT_DIR, logdir, f'{phase}_log.txt')
 
     head = '%(asctime)-15s %(message)s'
     logging.basicConfig(filename=log_file,

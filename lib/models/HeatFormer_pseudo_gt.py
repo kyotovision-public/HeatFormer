@@ -10,7 +10,7 @@ from lib.models.smpl import SMPL_orig, SMPL_MODEL_DIR
 from lib.models.composer import batch_heatmap_generator_vis
 from lib.utils.geometry import rot6d_to_rotmat, rot6d_to_rotmat_g, perspective_projection, matrix_to_axis_angle, aa_to_rotmat
 
-class SMPLFormerEncoderDecoder(nn.Module):
+class HeatFormerEncoderDecoder(nn.Module):
     def __init__(self, cfg, fuser, fuse_encoder, img_backbone, GCestimator, criterion, query_type=1):
         super().__init__()
 
@@ -72,7 +72,7 @@ class SMPLFormerEncoderDecoder(nn.Module):
         print(f'Fuse Encoder Train : {self.fuse_encoder_train}', flush=True)
         print(f'Using Pseud Ground Truth', flush=True)
 
-    def forward(self, target, eval=False, gt=None, epoch=0):
+    def forward(self, target, eval=False, epoch=0):
         with torch.no_grad():
 
             batch_size, n_view = target['inp'].shape[:2]

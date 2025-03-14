@@ -194,7 +194,6 @@ def heatmap_generator(
     im_x_l, im_x_r = torch.where(ux>0, ux, 0), torch.where(bx>heatmap_size, heatmap_size, bx)
     im_y_l, im_y_r = torch.where(ly>0, ly, 0), torch.where(ry>heatmap_size, heatmap_size, ry)
 
-    # TODO 高速化
     for i in range(n_joints):
         if joints_vis[i]>0.5:
             ixl, ixr = im_x_l[i], im_x_r[i]

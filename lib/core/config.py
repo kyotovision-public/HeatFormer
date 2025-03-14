@@ -44,7 +44,6 @@ cfg = CN()
 cfg.EPOCH = 30
 cfg.DEBUG = True
 cfg.DEBUG_ITER = 5
-cfg.DEBUG_DIR = ''
 cfg.DEVICE = 'cuda'
 cfg.SEED_VALUE = 1
 cfg.NUM_WORKERS = 16

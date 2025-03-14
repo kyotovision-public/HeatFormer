@@ -425,7 +425,7 @@ class Multiview_h36m:
         return all_db, order, cam_param
 
     def get_cam_param_h36m(self,subject_idx):
-        with open(osp.join(DB_DIR, f'Human36M_subject{int(subject_idx)}_camera.json'), 'rb') as f:
+        with open(osp.join(DB_DIR, f'extra_data/Human36M_subject{int(subject_idx)}_camera.json'), 'rb') as f:
             cam = json.load(f)
         ret = {'R':[],'t':[],'K':[]}
         for i in range(4):

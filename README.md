@@ -37,5 +37,25 @@ ${HeatFormer root}
 # Run demo
 
 # Training
+Following # Data preparation, download dataset, then start training using the following command:
+```
+python train.py --cfg \path\to\yaml --gpu 0
+```
 
 # Evaluation
+Download the dataset (Human3.6M, MPI-INF-3DHP, BEHAVE) and run the following code for each dataset.
+
+**Human3.6M**
+```
+python eval.py --cfg \path\to\yaml --pretrain \path\to\pretrain_model --dataset H36M --gpu 0
+```
+
+**MPI-INF-3DHP**
+```
+python eval.py --cfg \path\to\yaml --pretrain \path\to\pretrain_model --dataset MPII3D --gpu 0
+```
+
+**BEHAVE**
+```
+python eval_BEHAVE.py --cfg \path\to\yaml --pretrain \path\to\pretrain_model --datset BEHAVE --gpu 0
+```
