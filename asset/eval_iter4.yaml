@@ -1,11 +1,5 @@
-DEBUG : True
-DEBUG_ITER : 5
 J_regressor : 'J_regressor_h36m_correct.npy'
-DEBUG_DIR : DEBUG
-LOGDIR : LOG
 DEVICE : cuda
-EPOCH : 50
-DRY_RUN : True
 DATASET:
   NUM_JOINTS: 17
   NUM_VIEWS: 4
@@ -19,7 +13,7 @@ DATASET:
   AD_IMG_SIZE: 256
   FLIP: False
   TRAIN_SAMPLING_H36M: 10
-  TRAIN_SAMPLING_MPII3D: 10
+  TRAIN_SAMPLING_MPII3D: 5
 LOSS:
   CUMSUM: False
   KP_2D: 0.01
@@ -31,7 +25,8 @@ LOSS:
   VERTS: 0.0003
   NORMAL_VECTOR: 0.0
   VERTS_ALL: True
-  HEATMAP: [0.001, 0.003, 0.005, 0.007, 0.009]
+  HEATMAP: [0.001, 0.003, 0.005, 0.007]
+
 TRAIN:
   BATCH_SIZE: 8
   DATASETS: ['h36m', 'mpii3d']
@@ -45,13 +40,12 @@ TRAIN:
 
 MODEL:
   ADAFUSE:
-    PRETRAINED: 'lib/models/pretrain/h36m_4view.pth.tar'
+    PRETRAINED: 'lib/models/pretrain/adafuse.pth.tar'
   VIT:
-    # IMG_PRETRAINED: '/home/ymatsuda/U-HMR/vit_pos_trans_encoder/model_best.pth.tar'
-    HM_PRETRAINED: 'lib/models/pretrain/fuse_encoder_dep2_head8.pth.tar'
+    HM_PRETRAINED: 'lib/models/pretrain/HeatEncoder.pth.tar'
     HM_SIZE: 256
   HEATMAP: default
-  ITERS : 3
+  ITERS : 4
   TYPE : 'transformer_decoder_spin'
   FUSE_TYPE: 'SCORE'
   QUERY_TYPE: 3
@@ -63,7 +57,7 @@ MODEL:
     HEADS: 8
 
 POSE_RESNET:
-  PRETRAINED: 'lib/models/backbone/pose_resnet.pth'
+  PRETRAINED: 'lib/models/pretrain/heatmapper.pth.tar'
   FINAL_CONV_KERNEL: 1
   DECONV_WITH_BIAS: False
   NUM_DECONV_LAYERS: 3

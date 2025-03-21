@@ -70,7 +70,7 @@ class HeatFormerEncoderDecoder(nn.Module):
 
         self.fuse_encoder_train = not (len(self.cfg.MODEL.VIT.HM_PRETRAINED) > 0)
         print(f'Fuse Encoder Train : {self.fuse_encoder_train}', flush=True)
-        print(f'Using Pseud Ground Truth', flush=True)
+        print(f'Using Pseud Ground', flush=True)
 
     def forward(self, target, eval=False, epoch=0):
         with torch.no_grad():
@@ -226,6 +226,8 @@ class HeatFormerEncoderDecoder(nn.Module):
                 # align for heatmap generation with pseudo-ground-truth(triangulation)
                 transl = pgt_3d[:, 0] - pred_3d[:, 0]
                 regress_3d = pred_3d + transl.unsqueeze(1)
+
+                preds['pgt'] = pgt
 
                 ret.append(preds)
             

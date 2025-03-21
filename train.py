@@ -16,7 +16,7 @@ from lib.core.loss import get_loss
 from lib.core.config import ROOT_DIR, parse_args
 from lib.core.trainer import Trainer
 from lib.models.smpl import get_smpl_faces
-from lib.models.GCEstimator import G_HUMANS
+from lib.models.GCEstimator import GCEstimator
 from lib.models.backbone.vit import get_vit
 from lib.models.FuseEncoder import FuseEncoder
 from lib.models.discriminator import Discriminator
@@ -73,7 +73,7 @@ def main(cfg, args):
 
     ### Load Backbone for Image
     img_vit = get_vit(cfg).to(cfg.DEVICE)
-    GCEstimater = G_HUMANS().to(cfg.DEVICE)
+    GCEstimater = GCEstimator().to(cfg.DEVICE)
     img_vit_path = osp.join(ROOT_DIR, 'lib/models/pretrain/img_vit.pth.tar')
     gcestimator_path = osp.join(ROOT_DIR, 'lib/models/pretrain/gcestimator.pth.tar')
     img_vit_pretrained = torch.load(img_vit_path)

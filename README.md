@@ -9,7 +9,7 @@
 4. [RICH](https://rich.is.tue.mpg.de/)
 
 More specifically:
-1. **Human3.6M**: You regidter from this [link](http://vision.imar.ro/human3.6m/description.php) and download data. Then, you preprocess Human3.6M dataset by [H36M-Toolbox](https://github.com/CHUNYUWANG/H36M-Toolbox). We provide the preprocessed data => [Google Drive or One Drive](). After preprocessing data or download preprocedded data, you place data look like this:
+1. **Human3.6M**: You regidter from this [link](http://vision.imar.ro/human3.6m/description.php) and download data. Then, you preprocess Human3.6M dataset by [H36M-Toolbox](https://github.com/CHUNYUWANG/H36M-Toolbox). We provide the preprocessed data => [Google Drive](). After preprocessing data or download preprocedded data, you place data look like this:
 
 ```
 ${HeatFormer root}
@@ -34,25 +34,35 @@ ${HeatFormer root}
 ${HeatFormer root}
 |-- mpi_inf_3dhp
 
-# Run demo
-
 # Training
-Following # Data preparation, download dataset, then start training using the following command:
+Following **Data preparation**, download dataset and loading pretrain model including ViT from [Google Drive](), then start training using the following command:
 ```
-python train.py --cfg \path\to\yaml --gpu 0
+Iteration : 3
+python train.py --cfg asset/train_iter3.yaml --gpu 0
+
+Iteration : 4
+python train.py --cfg asset/train_iter4.yaml --gpu 0
 ```
 
 # Evaluation
-Download the dataset (Human3.6M, MPI-INF-3DHP, BEHAVE) and run the following code for each dataset.
+Download the dataset (Human3.6M, MPI-INF-3DHP, BEHAVE) and load pretrain models. Then run the following code for each dataset:
 
 **Human3.6M**
 ```
-python eval.py --cfg \path\to\yaml --pretrain \path\to\pretrain_model --dataset H36M --gpu 0
+Iteration : 3
+python eval.py --cfg asset/eval_iter3.yaml --pretrain lib/models/pretrain/model_best_iter3.pth.tar --align_type pgt --dataset H36M --gpu 0
+
+Iteration : 4
+python eval.py --cfg asset/eval_iter4.yaml --pretrain lib/models/pretrain/model_best_iter4.pth.tar --align_type pgt --dataset H36M --gpu 0
 ```
 
 **MPI-INF-3DHP**
 ```
-python eval.py --cfg \path\to\yaml --pretrain \path\to\pretrain_model --dataset MPII3D --gpu 0
+Iteration : 3
+python eval.py --cfg asset/eval_iter3.yaml --pretrain lib/models/pretrain/model_best_iter3.pth.tar --align_type pgt --dataset MPII3D --gpu 0
+
+Iteration : 4
+python eval.py --cfg asset/eval_iter4.yaml --pretrain lib/models/pretrain/model_best_iter4.pth.tar --align_type pgt --dataset MPII3D --gpu 0
 ```
 
 **BEHAVE**

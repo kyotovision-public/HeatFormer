@@ -1,0 +1,72 @@
+J_regressor : 'J_regressor_h36m_correct.npy'
+DEVICE : cuda
+DATASET:
+  NUM_JOINTS: 17
+  NUM_VIEWS: 4
+  USE_VIEW_H36M: [1,2,3,4]
+  USE_VIEW_MPII3D: [0,2,7,8]
+  SCALE_FACTOR: 0.0
+  ROT_FACTOR: 0
+  sigma: 3
+  IMG_SIZE: 384
+  HEATMAP_SIZE: 96
+  AD_IMG_SIZE: 256
+  FLIP: False
+  TRAIN_SAMPLING_H36M: 10
+  TRAIN_SAMPLING_MPII3D: 5
+LOSS:
+  CUMSUM: False
+  KP_2D: 0.01
+  KP_3D: 0.05
+  BETA: 0.0005
+  GLOBAL_ORIENT: 0.001
+  POSE: 0.001
+  ADVERSARIAL: 0.0005
+  VERTS: 0.0003
+  NORMAL_VECTOR: 0.0
+  VERTS_ALL: True
+  HEATMAP: [0.001, 0.003, 0.005]
+
+TRAIN:
+  BATCH_SIZE: 8
+  DATASETS: ['h36m', 'mpii3d']
+  EVAL_DATASETS: 'h36m'
+  LR_STEP: [30, 40]
+  LR_FACTOR: 0.2
+  LR: 0.00001
+  WD: 0.0
+  DISC_LR: 0.00001
+  DISC_WD: 0.0
+
+MODEL:
+  ADAFUSE:
+    PRETRAINED: 'lib/models/pretrain/adafuse.pth.tar'
+  VIT:
+    HM_PRETRAINED: 'lib/models/pretrain/HeatEncoder.pth.tar'
+    HM_SIZE: 256
+  HEATMAP: default
+  ITERS : 3
+  TYPE : 'transformer_decoder_spin'
+  FUSE_TYPE: 'SCORE'
+  QUERY_TYPE: 3
+  ENCODER:
+    DEPTH: 2
+    HEADS: 8
+  DECODER:
+    DEPTH: 2
+    HEADS: 8
+
+POSE_RESNET:
+  PRETRAINED: 'lib/models/pretrain/heatmapper.pth.tar'
+  FINAL_CONV_KERNEL: 1
+  DECONV_WITH_BIAS: False
+  NUM_DECONV_LAYERS: 3
+  NUM_DECONV_FILTERS:
+  - 256
+  - 256
+  - 256
+  NUM_DECONV_KERNELS:
+  - 4
+  - 4
+  - 4
+  NUM_LAYERS: 152

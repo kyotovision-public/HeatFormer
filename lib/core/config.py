@@ -170,9 +170,35 @@ def parse_args():
     os.environ['CUDA_VISIBLE_DEVICES'] = str(args.gpu)
     os.environ['EGL_DEVICE_ID'] = str(args.gpu)
 
-    cfg_file = args.cfg
+    cfg_file = osp.join(ROOT_DIR, args.cfg)
     if args.cfg is not None:
-        cfg = update_cfg(args.cfg)
+        cfg = update_cfg(osp.join(ROOT_DIR, args.cfg))
+    else:
+        cfg = get_cfg_defaults()    
+
+    return cfg, cfg_file, args
+
+def parse_args_eval():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--cfg', type=str, default='./configs/config.yaml', help='cfg file path')
+    parser.add_argument('--pretrain', type=str, default='lib/models/pretrain/model_best_iter3.pth.tar', help='pretrain model path')
+    parser.add_argument('--align_type', type=str, default='pgt', help='How to estimate the translation. Select from ["gt", "pgt", "est"]')
+    parser.add_argument('--dataset', type=str, default='H36M', help='Select from ["H36M", "MPII3D"]')
+    parser.add_argument('--output_all', type=bool, default=True, help='output results after each iteration (afetr 1, 2, and 3)')
+    parser.add_argument('--save', type=bool, default=True, help='save rendering results')
+    parser.add_argument('--save_freq', type=int, default=200, help='save frequent')
+    parser.add_argument('--save_dir', type=str, default='VAL_RES')
+    parser.add_argument('--gpu', type=str, default='0', help='gpu num')
+
+    args = parser.parse_args()
+    print(args, end='\n\n')
+    os.environ['CUDA_DEVICE_ORDER']='PCI_BUS_ID'
+    os.environ['CUDA_VISIBLE_DEVICES'] = str(args.gpu)
+    os.environ['EGL_DEVICE_ID'] = str(args.gpu)
+
+    cfg_file = osp.join(ROOT_DIR, args.cfg)
+    if args.cfg is not None:
+        cfg = update_cfg(osp.join(ROOT_DIR, args.cfg))
     else:
         cfg = get_cfg_defaults()    
 

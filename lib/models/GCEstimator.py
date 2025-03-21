@@ -4,7 +4,7 @@ import torch
 from einops import rearrange
 from lib.models.pose_Transformer import TransformerDecoder
 
-class G_HUMANS(nn.Module):
+class GCEstimator(nn.Module):
     def __init__(self):
         super().__init__()
 
