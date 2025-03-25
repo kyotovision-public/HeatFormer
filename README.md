@@ -132,7 +132,7 @@ Iteration : 3
 python eval_BEHAVE.py --cfg asset/eval_iter3.yaml --pretrain lib/models/pretrain/model_best_iter3.pth.tar --align_type pgt --score 0.3 --gpu 0
 
 Iteration : 4
-python eval_BEHAVE.py --cfg asset/eval_iter3.yaml --pretrain lib/models/pretrain/model_best_iter3.pth.tar --align_type pgt --score 0.3 --gpu 0
+python eval_BEHAVE.py --cfg asset/eval_iter4.yaml --pretrain lib/models/pretrain/model_best_iter4.pth.tar --align_type pgt --score 0.3 --gpu 0
 ```
 
 ## Acknowledgements
