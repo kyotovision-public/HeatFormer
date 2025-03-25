@@ -167,6 +167,9 @@ for i,target in enumerate(batch_generator):
             res_crop = cv2.warpAffine(rendered_img, target['trans_ad'][idx, number].cpu().numpy(), (256, 256), flags=cv2.INTER_LINEAR)
             result_img = np.concatenate([img_crop, res_crop], axis=0)
             save_images.append(result_img)
+            
+        final_img = np.concatenate(save_images, axis=1)
+        cv2.imwrite(SAVE_PATH, final_img)
 
     if joints_vis:
         jv = rearrange(target['joints_vis_openpose'], 'b v j -> (b v) j')[:, :15, None].cpu()
