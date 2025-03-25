@@ -1,5 +1,5 @@
 # HeatFormer: A Neural Optimizer for Multiview Human Mesh Recovery
-This is the offical [Pytorch](https://pytorch.org/) implementation of the paper
+This is the offical [Pytorch](https://pytorch.org/) implementation of the paper : 
 [[arXive](https://arxiv.org/abs/2412.04456)] [[project page](https://vision.ist.i.kyoto-u.ac.jp/research/heatformer/)]
 
 ![teaser](asset/images/teaser.png)
@@ -82,7 +82,7 @@ ${HeatFormer root}
                     |-- camera.calibration
 ```
 
-3. **BEHAVE**: We use BEHAVE dataset for evaluation. You visit [behave-dataset](https://github.com/xiexh20/behave-dataset) and download the data and put them like below:
+3. **BEHAVE**: We use BEHAVE dataset for evaluation. You visit [BEHAVE](https://virtualhumans.mpi-inf.mpg.de/behave/) and download the data and put them like below:
 
 ```
 ${HeatFormer root}
@@ -133,4 +133,17 @@ python eval_BEHAVE.py --cfg asset/eval_iter3.yaml --pretrain lib/models/pretrain
 
 Iteration : 4
 python eval_BEHAVE.py --cfg asset/eval_iter3.yaml --pretrain lib/models/pretrain/model_best_iter3.pth.tar --align_type pgt --score 0.3 --gpu 0
+```
+
+## Citing
+Please cite the following paper, if you use any part of our code and data.
+
+```
+@InProceedings{Ymatsubara_2025_CVPR,
+    author    = {Matsubara, Yuto and Nishino, Ko},
+    title     = {HeatFormer: A Neural Optimizer for Multiview Human Mesh Recovery},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2025},
+}
 ```
