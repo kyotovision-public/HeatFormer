@@ -135,6 +135,14 @@ Iteration : 4
 python eval_BEHAVE.py --cfg asset/eval_iter3.yaml --pretrain lib/models/pretrain/model_best_iter3.pth.tar --align_type pgt --score 0.3 --gpu 0
 ```
 
+## Acknowledgements
+We thank the authors for releasing code of excellent work:
+- [U-HMR](https://github.com/XiaobenLi00/U-HMR)
+- [4D-Humans](https://github.com/shubham-goel/4D-Humans)
+- [HMR](https://github.com/akanazawa/hmr)
+- [AdaFuse](https://github.com/zhezh/adafuse-3d-human-pose)
+
+
 ## Citing
 Please cite the following paper, if you use any part of our code and data.
 

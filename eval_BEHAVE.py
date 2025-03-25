@@ -28,7 +28,6 @@ import joblib
 import os
 
 align_list = ['gt', 'pgt']
-score = 0.0
 joints_vis = True
 
 cfg, cfg_file, args = parse_args_eval()
@@ -39,6 +38,8 @@ assert align_type in align_list, 'Select from align_list: ("gt", "pgt")'
 
 # Output the result after each iteration
 all_out = args.output_all
+
+score = args.score
 
 # Save flag and dir
 save = args.save
