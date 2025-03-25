@@ -79,7 +79,10 @@ ${HeatFormer root}
             |-- S*
                 |Seq*
                     |-- video_*
-                    |-- camera.calibration
+|-- mpi_inf_3dhp
+    |-- S*
+        |--Seq*
+            |-- camera.calibration
 ```
 
 3. **BEHAVE**: We use BEHAVE dataset for evaluation. You visit [BEHAVE](https://virtualhumans.mpi-inf.mpg.de/behave/) and download the data and put them like below:

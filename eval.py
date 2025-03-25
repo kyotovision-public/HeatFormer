@@ -209,11 +209,11 @@ for i,target in enumerate(batch_generator):
             verts = cam_mesh[idx, number]
 
             if ev_dataset == 'H36M':
-                print(osp.join('/d/workspace/ymatsuda/dataset', target['img_name'][number][idx][10:]))
-                img = cv2.imread(osp.join('/d/workspace/ymatsuda/dataset', target['img_name'][number][idx][10:]))
+                print(osp.join(ROOT_DIR, target['img_name'][number][idx][10:]))
+                img = cv2.imread(osp.join(ROOT_DIR, target['img_name'][number][idx][10:]))
             elif ev_dataset == 'MPII3D':
-                print(osp.join('/d/workspace/ymatsuda/dataset/images_mpii3d', target['img_name'][number][idx][13:]))
-                img = cv2.imread(osp.join('/d/workspace/ymatsuda/dataset/images_mpii3d', target['img_name'][number][idx][13:]))
+                print(osp.join(ROOT_DIR, 'images_mpii3d', target['img_name'][number][idx][13:]))
+                img = cv2.imread(osp.join(ROOT_DIR, 'images_mpii3d', target['img_name'][number][idx][13:]))
 
             if align_type == 'est':
                 img_orig = cv2.warpAffine(img, target['trans_ad'][idx, number].cpu().numpy(), (256, 256), flags=cv2.INTER_LINEAR)
