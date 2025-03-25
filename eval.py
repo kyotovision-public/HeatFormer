@@ -274,6 +274,7 @@ for i,target in enumerate(batch_generator):
     batch_generator.set_description(desc)
     start = time.time()
 
+print()
 if all_out:
     for phase in range(cfg.MODEL.ITERS-1):
         if ev_dataset == 'H36M':

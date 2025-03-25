@@ -198,6 +198,7 @@ for i,target in enumerate(batch_generator):
     batch_generator.set_description(desc)
     start = time.time()
 
+print()
 if all_out:
     for phase in range(cfg.MODEL.ITERS-1):
         print(f'PHASE {phase+1}  MPJPE : {mpjpe_phase[phase] / num:.4f}, PA-MPJPE : {pa_mpjpe_phase[phase] / num:.4f}')
