@@ -7,7 +7,7 @@ import numpy as np
 
 from torchvision import transforms
 
-from lib.core.config import DB_DIR
+from lib.core.config import DB_DIR, ROOT_DIR
 from lib.utils.transform import get_affine_transform_cam
 
 
@@ -27,7 +27,6 @@ class multiview_BEHAVE:
             self.db = joblib.load(osp.join(DB_DIR, 'BEHAVE_train_db.pt'))
         elif state == 'valid':
             self.db = joblib.load(osp.join(DB_DIR, 'BEHAVE_valid_db.pt'))
-        # TODO rename img_name in BEHAVE_*_db.pt
 
         self.transform = transforms.Compose([
             transforms.ToTensor(),
@@ -71,7 +70,8 @@ class multiview_BEHAVE:
             ad_inp_ = np.zeros((self.num_view, 3, self.ad_img_size, self.ad_img_size))
             crop_trans_ad = np.zeros((self.num_view, 2, 3))
         for i in range(self.num_view):
-            img_path = osp.join(data['img_name'], f'k{i}.color.jpg')
+            img_path = osp.join(ROOT_DIR, data['img_name'], f'k{i}.color.jpg')
+            # img_path = osp.join(data['img_name'], f'k{i}.color.jpg')
             img = cv2.imread(img_path, cv2.IMREAD_COLOR | cv2.IMREAD_IGNORE_ORIENTATION)
             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             # assert img.shape[0] == img.shape[1]

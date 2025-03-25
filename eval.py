@@ -71,10 +71,6 @@ if align_type == 'pgt' or align_type == 'gt':
 else:
     assert cfg.MODEL.FUSE_TYPE == 'NO', 'Set cfg.MODEL.FUSE_TYPE "NO"'
 
-print('='*15 + 'VIEWS' + '='*15)
-print(f'number of views : {cfg.DATASET.NUM_VIEWS}, USE : {cfg.DATASET.USE_VIEW_H36M}')
-print('='*35)
-
 if cfg.SEED_VALUE >= 0:
     print(f'Seed value for the experiment {cfg.SEED_VALUE}', flush=True)
     os.environ['PYTHONHASHSEED'] = str(cfg.SEED_VALUE)

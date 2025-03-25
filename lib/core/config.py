@@ -24,8 +24,7 @@ cur_dir = os.getcwd()
 ROOT_DIR = osp.join(cur_dir, 'HeatFormer')
 BASE_DATA_DIR = osp.join(cur_dir, 'HeatFormer/data/base_data')
 DB_DIR = osp.join(cur_dir, 'HeatFormer/data/preprocessed_data')
-IMG_DIR = '/d/workspace/ymatsuda/dataset'
-# IMG_DIR = osp.join(cur_dir, 'HeatFormer/data/dataset_img')
+IMG_DIR = osp.join(cur_dir, 'HeatFormer/data/dataset')
 MPII3D_DIR = osp.join(cur_dir, 'mpi_inf_3dhp') # TODO change dir name
 RICH_PATH = osp.join(cur_dir, 'RICH')
 JOINT_REGRESSOR_TRAIN_EXTRA = osp.join(BASE_DATA_DIR, 'J_regressor_extra.npy')
@@ -38,7 +37,6 @@ H36M_kinematics = [[0, 1], [1, 2], [2, 3],
                    [8, 14], [14, 15], [15, 16],
                    [8, 11], [11, 12], [12, 13]]
 
-# TODO remove not used for arguments
 # Configuration variables
 cfg = CN()
 cfg.EPOCH = 30
@@ -185,6 +183,7 @@ def parse_args_eval():
     parser.add_argument('--align_type', type=str, default='pgt', help='How to estimate the translation. Select from ["gt", "pgt", "est"]')
     parser.add_argument('--dataset', type=str, default='H36M', help='Select from ["H36M", "MPII3D"]')
     parser.add_argument('--output_all', type=bool, default=True, help='output results after each iteration (afetr 1, 2, and 3)')
+    parser.add_argument('--score', type=float, default=0.3, help='use joints for evaluation whose confidence is higher than argument')
     parser.add_argument('--save', type=bool, default=True, help='save rendering results')
     parser.add_argument('--save_freq', type=int, default=200, help='save frequent')
     parser.add_argument('--save_dir', type=str, default='VAL_RES')
