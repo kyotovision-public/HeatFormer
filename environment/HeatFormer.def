@@ -1,0 +1,52 @@
+Bootstrap: docker
+From: nvidia/cuda:11.3.1-devel-ubuntu20.04
+
+%post
+    export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
+
+    export PYENV_ROOT=/opt/pyenv
+    export PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
+    export PYTHONNOUSERSITE=1
+    export EGL_DEVICE_ID=1
+
+    apt-get -y update
+    apt-get -y install vim gcc lv git wget curl sudo ffmpeg locales zlib1g-dev \
+    libbz2-dev libssl-dev libreadline-dev libjpeg-dev libboost-dev p7zip-full \
+    build-essential libdb-dev libreadline-dev libffi-dev libgdbm-dev liblzma-dev \
+    libncursesw5-dev libsqlite3-dev libssl-dev zlib1g-dev uuid-dev tk-dev parallel fuse-zip sshfs
+    apt-get -y install libglfw3-dev libgles2-mesa-dev freeglut3-dev
+    apt-get -y install libnvidia-gl-535-server
+    locale-gen ja_JP.UTF-8
+
+    mkdir -p /workspace
+    cd /workspace
+
+    curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
+    pyenv install 3.8.12
+    pyenv global 3.8.12
+    eval "$(pyenv init -)"
+    python --version
+
+    # python3 -m pip install --upgrade pip
+    pip list
+
+    python3 -m pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu113
+    python3 -m pip install git+https://github.com/giacaglia/pytube.git --upgrade
+    python3 -m pip install pyopengl==3.1.4 pycocotools
+    python3 -m pip install tqdm==4.28.1 yacs==0.1.6 numpy==1.22.3 smplx gdown==3.6.4 \
+     PyYAML==5.3.1 joblib==0.14.1 pillow==6.2.1 trimesh==3.5.25 pyrender==0.1.36 progress==1.5 \
+     filterpy==1.4.5 scipy scikit-image scikit-learn scikit-video opencv-python matplotlib h5py numba llvmlite tensorboard
+    python3 -m pip install einops timm omegaconf
+    # install pytorch3d
+    python3 -m pip install fvcore iopath
+    python3 -m pip install --no-index --no-cache-dir pytorch3d -f https://dl.fbaipublicfiles.com/pytorch3d/packaging/wheels/py38_cu113_pyt1121/download.html
+    
+    python3 -m pip install git+https://github.com/mattloper/chumpy.git
+    python3 -m pip install git+https://github.com/mkocabas/yolov3-pytorch.git
+    python3 -m pip install git+https://github.com/mkocabas/multi-person-tracker.git
+
+%environment
+    export PYENV_ROOT=/opt/pyenv
+    export PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
+    export PYTHONNOUSERSITE=1
+    export EGL_DEVICE_ID=1
