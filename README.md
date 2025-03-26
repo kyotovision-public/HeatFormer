@@ -18,8 +18,7 @@ singularity run --nv environment/HeatFormer.sif
 ```
 
 # Data preparation
-**SMPL**: You download SMPL layers from [here](https://smpl.is.tue.mpg.de/)(male&female) and [here](https://smplify.is.tue.mpg.de/)(neutral). You download adiitional data for SMPL from [here]() and place data like below:
-
+**SMPL**: You download SMPL layers from [here](https://smpl.is.tue.mpg.de/)(male&female) and [here](https://smplify.is.tue.mpg.de/)(neutral). You can download additional data for SMPL from [here]() and place the data in a directory as follows.
 ```
 ${HeatFormer root}
 |-- data
@@ -34,16 +33,15 @@ ${HeatFormer root}
         |-- smpl_mean_params.npz
 ```
 
-Dataset
+Datasets
 1. [Human3.6M](http://vision.imar.ro/human3.6m/description.php)
 2. [MPI-INF-3DHP](http://gvv.mpi-inf.mpg.de/3dhp-dataset/)
 3. [BEHAVE](https://virtualhumans.mpi-inf.mpg.de/behave/)
 
-Except for images, we provide preprocessed_data for all dataset.
-You download from [Google Drive]() and place data following each dataset instruction.
+Except for images, we provide preprocessed_data for all datasets.
+You can download these from [Google Drive]() and place them following each dataset instruction:
 
-More specifically:
-1. **Human3.6M**: You regidter from this [link](http://vision.imar.ro/human3.6m/description.php) and download data. Then, you preprocess Human3.6M dataset by [H36M-Toolbox](https://github.com/CHUNYUWANG/H36M-Toolbox). After preprocessing data or download preprocedded data, you place data look like this:
+1. **Human3.6M**: You can register and download from [link](http://vision.imar.ro/human3.6m/description.php). The Human3.6M dataset can be preprocessed with [H36M-Toolbox](https://github.com/CHUNYUWANG/H36M-Toolbox). After preprocessing the data or by downloading our preprocessed data, you can place it in the following data directory.
 
 ```
 ${HeatFormer root}
@@ -63,7 +61,7 @@ ${HeatFormer root}
             ..
 ```
 
-2. **MPI-INF-3DHP**: You visit the [website](http://gvv.mpi-inf.mpg.de/3dhp-dataset/) of dataset, download zip file and, run the scripts. After running the scripts, you place the data look like this:
+2. **MPI-INF-3DHP**: You can visit the [website](http://gvv.mpi-inf.mpg.de/3dhp-dataset/) of the dataset, download the zip file and, run the scripts. After running the scripts, you can place the data as follows.
 
 ```
 ${HeatFormer root}
@@ -85,8 +83,7 @@ ${HeatFormer root}
             |-- camera.calibration
 ```
 
-3. **BEHAVE**: We use BEHAVE dataset for evaluation. You visit [BEHAVE](https://virtualhumans.mpi-inf.mpg.de/behave/) and download the data and put them like below:
-
+3. **BEHAVE**: We use the BEHAVE dataset for evaluation. You can visit [BEHAVE](https://virtualhumans.mpi-inf.mpg.de/behave/) and download the data and put them in a directory structure as follows.
 ```
 ${HeatFormer root}
 |-- data
@@ -99,7 +96,7 @@ ${HeatFormer root}
 ```
 
 # Training
-Following **Data preparation**, download dataset and loading pretrain model including ViT from [Google Drive](), then start training using the following command:
+Following **Data preparation**, you can download the datasets and load the pretrain model including ViT from [Google Drive](), then start training by
 ```
 Iteration : 3
 python train.py --cfg asset/train_iter3.yaml --gpu 0
@@ -109,7 +106,7 @@ python train.py --cfg asset/train_iter4.yaml --gpu 0
 ```
 
 # Evaluation
-Download the dataset (Human3.6M, MPI-INF-3DHP, BEHAVE) and load pretrain models. Then run the following code for each dataset:
+Download the dataset (Human3.6M, MPI-INF-3DHP, BEHAVE) and load the pretrain models. Then run the following code for each dataset:
 
 **Human3.6M**
 ```
@@ -139,7 +136,7 @@ python eval_BEHAVE.py --cfg asset/eval_iter4.yaml --pretrain lib/models/pretrain
 ```
 
 ## Acknowledgements
-We thank the authors for releasing code of excellent work:
+We thank the authors for releasing code of the following excellent work without which our work would have not been possible.
 - [U-HMR](https://github.com/XiaobenLi00/U-HMR)
 - [4D-Humans](https://github.com/shubham-goel/4D-Humans)
 - [HMR](https://github.com/akanazawa/hmr)
