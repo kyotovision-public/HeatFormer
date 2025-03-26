@@ -18,7 +18,7 @@ singularity run --nv environment/HeatFormer.sif
 ```
 
 # Data preparation
-**SMPL**: You download SMPL layers from [here](https://smpl.is.tue.mpg.de/)(male&female) and [here](https://smplify.is.tue.mpg.de/)(neutral). You can download additional data for SMPL from [here]() and place the data in a directory as follows.
+**SMPL**: You download SMPL layers from [here](https://smpl.is.tue.mpg.de/)(male&female) and [here](https://smplify.is.tue.mpg.de/)(neutral). You can download additional data for SMPL from [here](https://drive.google.com/file/d/1gE3ceqV-606O3WeaoMPztNWc8Vu5n2Zx/view?usp=drive_link) and place the data in a directory as follows.
 ```
 ${HeatFormer root}
 |-- data
@@ -39,7 +39,7 @@ Datasets
 3. [BEHAVE](https://virtualhumans.mpi-inf.mpg.de/behave/)
 
 Except for images, we provide preprocessed_data for all datasets.
-You can download these from [Google Drive]() and place them following each dataset instruction:
+You can download these from [Google Drive](https://drive.google.com/file/d/1pg_vkcq-OkDxFu05EvhB_PNX0xVSMMxJ/view?usp=drive_link) and place them following each dataset instruction:
 
 1. **Human3.6M**: You can register and download from [link](http://vision.imar.ro/human3.6m/description.php). The Human3.6M dataset can be preprocessed with [H36M-Toolbox](https://github.com/CHUNYUWANG/H36M-Toolbox). After preprocessing the data or by downloading our preprocessed data, you can place it in the following data directory.
 
@@ -96,7 +96,7 @@ ${HeatFormer root}
 ```
 
 # Training
-Following **Data preparation**, you can download the datasets and load the pretrain model including ViT from [Google Drive](), then start training by
+Following **Data preparation**, you can download the datasets and load the pretrain model including ViT from [Google Drive](https://drive.google.com/file/d/1MTRmrv6rIdeCQktHAZAFlSBE3WT6aRF4/view?usp=drive_link), then start training by
 ```
 Iteration : 3
 python train.py --cfg asset/train_iter3.yaml --gpu 0
