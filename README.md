@@ -1,6 +1,6 @@
 # HeatFormer: A Neural Optimizer for Multiview Human Mesh Recovery
 This is the offical [Pytorch](https://pytorch.org/) implementation of the paper : 
-[[arXive](https://arxiv.org/abs/2412.04456)] [[project page](https://vision.ist.i.kyoto-u.ac.jp/research/heatformer/)]
+[[arXiv](https://arxiv.org/abs/2412.04456)] [[project page](https://vision.ist.i.kyoto-u.ac.jp/research/heatformer/)]
 
 ![teaser](asset/images/teaser.png)
 ![teaser](asset/images/model.png)
